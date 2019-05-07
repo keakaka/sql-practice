@@ -60,6 +60,8 @@ select t.title 직책, s.salary 연봉
 from titles t
 join salaries s on(t.emp_no = s.emp_no)
 where s.salary > 50000
+and s.to_date = '9999-01-01'
+and t.to_date = '9999-01-01'
 order by 연봉 desc;
 
 -- 9
