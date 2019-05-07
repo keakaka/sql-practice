@@ -70,6 +70,7 @@ from salaries s
 join dept_emp de on(s.emp_no = de.emp_no)
 join departments d on(de.dept_no = d.dept_no)
 where de.to_date = '9999-01-01'
+and s.to_date = '9999-01-01'
 group by d.dept_name
 order by avg(s.salary) desc;
 
@@ -78,5 +79,6 @@ select t.title 직책, avg(s.salary) '직책별 평균연봉'
 from salaries s
 join titles t on(s.emp_no = t.emp_no)
 where t.to_date = '9999-01-01'
+and s.to_date = '9999-01-01'
 group by t.title
 order by avg(s.salary) desc;
