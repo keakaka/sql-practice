@@ -64,6 +64,8 @@ and de.to_date > now();
 -- 6
 select dept_no
 from dept_emp de join salaries s on (de.emp_no = s.emp_no)
+where de.to_date > now()
+and s.to_date > now()
 group by de.dept_no
 order by avg(s.salary) desc
 limit 1;
@@ -71,6 +73,8 @@ limit 1;
 -- 7
 select title
 from titles t join salaries s on (t.emp_no = s.emp_no)
+where t.to_date > now()
+and s.to_date > now()
 group by t.title
 order by avg(s.salary) desc
 limit 1;
@@ -89,4 +93,5 @@ join departments d on (de.dept_no = d.dept_no)
 join salaries s on (e.emp_no = s.emp_no)
 and dm.to_date > now()
 and de.to_date > now()
+and s.to_date > now()
 and s.salary > (select s2.salary from salaries s2 where emp_no = dm.emp_no and s2.to_date > now());
