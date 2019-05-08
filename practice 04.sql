@@ -36,8 +36,8 @@ and s2.to_date > now()
 and de2.to_date > now();
 
 -- 4
-select e.emp_no, concat(e.first_name, ' ', e.last_name), 
-(select concat(e2.first_name, ' ', e2.last_name) from employees e2 where dm.emp_no = e2.emp_no), d.dept_name
+select e.emp_no, concat(e.first_name, ' ', e.last_name) emp_name, 
+(select concat(e2.first_name, ' ', e2.last_name) from employees e2 where dm.emp_no = e2.emp_no) man_name, d.dept_name
 from employees e
 join dept_emp de on (e.emp_no = de.emp_no)
 join dept_manager dm on (de.dept_no = dm.dept_no)
@@ -47,7 +47,7 @@ and de.to_date > now();
 
 
 -- 5
-select e.emp_no, concat(e.first_name, ' ', e.last_name), t.title, s.salary
+select e.emp_no, concat(e.first_name, ' ', e.last_name) emp_name, t.title, s.salary
 from employees e
 join titles t on (e.emp_no = t.emp_no)
 join salaries s on (e.emp_no = s.emp_no)
@@ -76,7 +76,6 @@ order by avg(s.salary) desc
 limit 1;
 
 -- 8
-
 select 
 	d.dept_name, 
     concat(e.first_name, ' ', e.last_name) emp_name, s.salary,
