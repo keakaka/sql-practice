@@ -76,7 +76,7 @@ and salary > 50000;
 
 select e.first_name, s.salary from employees e join salaries s on(e.emp_no = s.emp_no)
 where s.to_date > now()
-and (e.emp_no, s.salary) in
+and (e.emp_no, s.salary) =any
 	(select emp_no, salary
 	from salaries
 	where to_date > now()
